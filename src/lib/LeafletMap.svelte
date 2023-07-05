@@ -78,7 +78,7 @@
 
 			map.createPane('pane_FloydBorder');
 			// Load and display your JSON file using Leaflet.js
-			fetch('/src/Data/FloydBorder.json')
+			fetch('/static/Data/FloydBorder.json')
 				.then((response) => response.json())
 				.then((data) => {
 					L.geoJSON(data, {
@@ -115,12 +115,12 @@
 				meters.forEach((meter) => {
 					const { Route, Condition, Longitude, Latitude } = meter;
 					const markerIcon = L.icon({
-						iconUrl: `src/Data/markers/rt${Route}.svg`,
+						iconUrl: `static/Data/markers/rt${Route}.svg`,
 						iconSize: [25, 25] // Adjust the size according to your marker images
 					});
 
 					const conditionMarkerIcon = L.icon({
-						iconUrl: `src/Data/markers/${Condition}_condition.png`,
+						iconUrl: `static/Data/markers/${Condition}_condition.png`,
 						iconSize: [13, 13] // Adjust the size according to your marker images
 					});
 
@@ -264,7 +264,7 @@
 					'body > div > main > main > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div > section'
 				);
 
-				var CollapseBtn = `<div><img class="layerControlToggle" style="float:right;" src="src/Data/images/lct_button.png"></div>`;
+				var CollapseBtn = `<div><img class="layerControlToggle" style="float:right;" src="static/Data/images/lct_button.png"></div>`;
 
 				LayerControlContainer.insertAdjacentHTML('afterbegin', CollapseBtn);
 
