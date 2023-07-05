@@ -1,6 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
 
-const dev = process.argv.includes('dev');
 
 export default {
     kit: {
@@ -14,7 +13,7 @@ export default {
             strict: true
         }),
 		paths: {
-			base: dev ? '' : process.env.BASE_PATH | `/build/index.html`,
+			base: process.env.NODE_ENV === "production" ? "/FloydWebMap" : "",
 		}
     }
 };
