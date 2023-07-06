@@ -42,3 +42,7 @@ div.leaflet-top.leaflet-left {
 div.spacerZoom {
     top:3rem;
 }
+
+body {
+	margin: 0;
+}

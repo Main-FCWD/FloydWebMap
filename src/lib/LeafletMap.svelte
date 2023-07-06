@@ -78,7 +78,7 @@
 
 			map.createPane('pane_FloydBorder');
 			// Load and display your JSON file using Leaflet.js
-			fetch('/static/Data/FloydBorder.json')
+			fetch('/Data/FloydBorder.json')
 				.then((response) => response.json())
 				.then((data) => {
 					L.geoJSON(data, {
@@ -115,12 +115,12 @@
 				meters.forEach((meter) => {
 					const { Route, Condition, Longitude, Latitude } = meter;
 					const markerIcon = L.icon({
-						iconUrl: `static/Data/markers/rt${Route}.svg`,
+						iconUrl: `/Data/markers/rt${Route}.svg`,
 						iconSize: [25, 25] // Adjust the size according to your marker images
 					});
 
 					const conditionMarkerIcon = L.icon({
-						iconUrl: `static/Data/markers/${Condition}_condition.png`,
+						iconUrl: `/Data/markers/${Condition}_condition.png`,
 						iconSize: [13, 13] // Adjust the size according to your marker images
 					});
 
@@ -264,7 +264,7 @@
 					'body > div > main > main > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div > section'
 				);
 
-				var CollapseBtn = `<div><img class="layerControlToggle" style="float:right;" src="static/Data/images/lct_button.png"></div>`;
+				var CollapseBtn = `<div><img class="layerControlToggle" style="float:right;" src="/Data/images/lct_button.png"></div>`;
 
 				LayerControlContainer.insertAdjacentHTML('afterbegin', CollapseBtn);
 
@@ -273,23 +273,25 @@
 				);
 
 				layerCollapseBtn.addEventListener('click', () => {
-					document.querySelector('div.header-bg > span').removeAttribute('leaflet-control-layers-expanded');
-					document.querySelector('body > div > main > main > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div').setAttribute('class','leaflet-control-layers leaflet-control-layers-collapsed leaflet-control');
+					document
+						.querySelector('div.header-bg > span')
+						.removeAttribute('leaflet-control-layers-expanded');
+					document
+						.querySelector(
+							'body > div > main > main > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div'
+						)
+						.setAttribute(
+							'class',
+							'leaflet-control-layers leaflet-control-layers-collapsed leaflet-control'
+						);
 				});
 
-                var titleSpan = document.querySelector('div.header-bg');
+				var titleSpan = document.querySelector('div.header-bg');
 
-                var CollapseTitleBtn = `<div class="titleSpanToggle" style="float:right;"></div>`;
-
-				titleSpan.insertAdjacentHTML('afterbegin', CollapseTitleBtn);
-
-                CollapseTitleBtn.addEventListener('click', () => {
-					document.querySelector('body > div > main > main > div').removeAttribute('header-bg');
-					
+				titleSpan.addEventListener('click', () => {
+					document.querySelector('body > div > main > main').removeChild(titleSpan);
+					console.log('Title Span Clicked!');
 				});
-
-
-
 			}
 
 			addMarkersToMap(map, meters);
@@ -335,12 +337,11 @@
 	.header-bg > span {
 		padding-left: 1rem;
 		padding-right: 1rem;
-        padding-top: .5rem;
-        padding-bottom: .5rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 		font-size: x-large;
 		font-weight: normal;
 		color: #415462;
 		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	}
-
 </style>
