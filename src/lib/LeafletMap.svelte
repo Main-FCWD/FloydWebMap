@@ -78,7 +78,7 @@
 
 			map.createPane('pane_FloydBorder');
 			// Load and display your JSON file using Leaflet.js
-			fetch('/Data/FloydBorder.json')
+			fetch('https://raw.githubusercontent.com/Main-FCWD/FloydWebMap/main/static/Data/FloydBorder.json')
 				.then((response) => response.json())
 				.then((data) => {
 					L.geoJSON(data, {
@@ -115,12 +115,12 @@
 				meters.forEach((meter) => {
 					const { Route, Condition, Longitude, Latitude } = meter;
 					const markerIcon = L.icon({
-						iconUrl: `/Data/markers/rt${Route}.svg`,
+						iconUrl: `https://raw.githubusercontent.com/Main-FCWD/FloydWebMap/main/static/Data/markers/rt${Route}.svg`,
 						iconSize: [25, 25] // Adjust the size according to your marker images
 					});
 
 					const conditionMarkerIcon = L.icon({
-						iconUrl: `/Data/markers/${Condition}_condition.png`,
+						iconUrl: `https://raw.githubusercontent.com/Main-FCWD/FloydWebMap/main/static/Data/markers/rt${Condition}_condition.png`,
 						iconSize: [13, 13] // Adjust the size according to your marker images
 					});
 
