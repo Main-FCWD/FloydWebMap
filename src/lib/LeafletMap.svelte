@@ -261,7 +261,7 @@
 				treeLayerControl.addTo(map);
 
 				var LayerControlContainer = document.querySelector(
-					'body > div > main > main > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div > section'
+					'body > div > main > section > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div > section'
 				);
 
 				var CollapseBtn = `<div><img class="layerControlToggle" style="float:right;" src="/Data/images/lct_button.png"></div>`;
@@ -269,7 +269,7 @@
 				LayerControlContainer.insertAdjacentHTML('afterbegin', CollapseBtn);
 
 				var layerCollapseBtn = document.querySelector(
-					'body > div > main > main > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div > section > div:nth-child(1)'
+					'body > div > main > section > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div > section > div:nth-child(1)'
 				);
 
 				layerCollapseBtn.addEventListener('click', () => {
@@ -278,7 +278,7 @@
 						.removeAttribute('leaflet-control-layers-expanded');
 					document
 						.querySelector(
-							'body > div > main > main > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div'
+							'body > div > main > section > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div'
 						)
 						.setAttribute(
 							'class',
@@ -289,7 +289,7 @@
 				var titleSpan = document.querySelector('div.header-bg');
 
 				titleSpan.addEventListener('click', () => {
-					document.querySelector('body > div > main > main').removeChild(titleSpan);
+					document.querySelector('body > div > main > section').removeChild(titleSpan);
 					console.log('Title Span Clicked!');
 				});
 			}
@@ -306,16 +306,16 @@
 	});
 </script>
 
-<main>
+<section>
 	<div bind:this={mapElement} />
 	<div class="header-bg">
 		<span>Floyd County Water Department</span>
 	</div>
-</main>
+</section>
 
 <style>
 	@import 'leaflet/dist/leaflet.css';
-	main div {
+	section div {
 		height: 100vh;
 	}
 
